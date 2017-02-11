@@ -2,16 +2,22 @@ import React from 'react';
 import {
   Router,
   Route,
-  IndexRoute,
+  IndexRedirect,
 } from 'react-router';
 import App from './containers/App';
+import EventRoutes from './events';
 
-export default (props) => {
-  return (
-    <Router history={props.history}>
-        <Route path="/" component={App}>
-          <IndexRoute component={() => <h1> Welcome Message! </h1> } />
-        </Route>
-      </Router>
-    );
-}
+const AppRouter = props => (
+  <Router history={props.history}>
+    <Route path="/" component={App}>
+      <IndexRedirect to="/events/new" />
+      {EventRoutes}
+    </Route>
+  </Router>
+);
+
+AppRouter.propTypes = {
+  history: React.PropTypes.object.isRequired,
+};
+
+export default AppRouter;
