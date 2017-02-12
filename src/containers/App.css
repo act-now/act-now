@@ -1,0 +1,11 @@
+.app-container {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
