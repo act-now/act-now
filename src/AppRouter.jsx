@@ -5,13 +5,13 @@ import {
   IndexRedirect,
 } from 'react-router';
 import App from './containers/App';
-import EventRoutes from './events';
+import DemonstrationRoutes from './demonstrations';
 
 const AppRouter = props => (
   <Router history={props.history}>
     <Route path="/" component={App}>
-      <IndexRedirect to="/events/new" />
-      {EventRoutes}
+      <IndexRedirect to="/demonstrations/new" />
+      {DemonstrationRoutes}
     </Route>
   </Router>
 );

@@ -6,11 +6,11 @@ import TimePicker from 'material-ui/TimePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from './redux';
 
-export class EventForm extends Component {
-  onChangeTitle = (event, value) => {
+export class DemonstrationForm extends Component {
+  onChangeTitle = (demonstration, value) => {
     this.props.changeTitle(this.props.id, value);
   };
-  onChangeDescription = (event, value) => {
+  onChangeDescription = (demonstration, value) => {
     this.props.changeDescription(this.props.id, value);
   };
   onChangeDate = (_, value) => {
@@ -20,6 +20,7 @@ export class EventForm extends Component {
   onChangeTime = (_, value) => {
     this.props.changeDate(this.props.id, value.valueOf());
   };
+
   onSubmit = (event) => {
     event.preventDefault();
     // Note should change the action if this were to update instead of create
@@ -71,7 +72,7 @@ export class EventForm extends Component {
   }
 }
 
-EventForm.propTypes = {
+DemonstrationForm.propTypes = {
   title: React.PropTypes.string.isRequired,
   changeTitle: React.PropTypes.func.isRequired,
   description: React.PropTypes.string.isRequired,
@@ -84,5 +85,5 @@ EventForm.propTypes = {
 
 };
 
-const mapStateToProps = (state, ownProps) => state.events[ownProps.id];
-export default connect(mapStateToProps, actions)(EventForm);
+const mapStateToProps = (state, ownProps) => state.demonstrations[ownProps.id];
+export default connect(mapStateToProps, actions)(DemonstrationForm);

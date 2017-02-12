@@ -14,15 +14,15 @@ const init = {
   error: null,
 };
 
-const CHANGE_TITLE = 'events/CHANGE_TITLE';
-const CHANGE_DESCRIPTION = 'events/CHANGE_DESCRIPTION';
-const CHANGE_DATE = 'events/CHANGE_DATE';
-const FETCH = 'events/FETCH';
-const FETCH_ERROR = 'events/FETCH_ERROR';
-const FETCH_SUCESSS = 'events/FETCH_SUCESSS';
-const CREATE = 'events/CREATE';
-const CREATE_ERROR = 'events/CREATE_ERROR';
-const CREATE_SUCESS = 'events/CREATE_SUCESS';
+const CHANGE_TITLE = 'demonstrations/CHANGE_TITLE';
+const CHANGE_DESCRIPTION = 'demonstrations/CHANGE_DESCRIPTION';
+const CHANGE_DATE = 'demonstrations/CHANGE_DATE';
+const FETCH = 'demonstrations/FETCH';
+const FETCH_ERROR = 'demonstrations/FETCH_ERROR';
+const FETCH_SUCESSS = 'demonstrations/FETCH_SUCESSS';
+const CREATE = 'demonstrations/CREATE';
+const CREATE_ERROR = 'demonstrations/CREATE_ERROR';
+const CREATE_SUCESS = 'demonstrations/CREATE_SUCESS';
 
 export const changeTitle = createAction(CHANGE_TITLE, (id, title) => ({ id, title }));
 export const changeDescription = createAction(
@@ -39,7 +39,7 @@ export const fetchError = createAction(FETCH_ERROR);
 
 export const fetch = id => (dispatch) => {
   dispatch({ type: FETCH });
-  axios.get(`/events/${id}`)
+  axios.get(`/demonstrations/${id}`)
     .then((res) => {
       dispatch(fetchSuccess(res.data));
     })
