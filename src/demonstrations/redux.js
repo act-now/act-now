@@ -1,5 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import axios from 'axios';
+import { push } from 'react-router-redux';
 
 const newEvent = {
   title: '',
@@ -56,6 +57,7 @@ export const create = () => (dispatch, getState) => {
   return axios.post('/events', state.events.new)
     .then((res) => {
       dispatch(createSuccess(res.data));
+      dispatch(push(`/demonstrations/${res.data.id}`));
     })
     .catch((err) => {
       dispatch(createError(err));
@@ -125,6 +127,7 @@ export default handleActions({
       [id]: { ...event },
       loading: false,
       error: null,
+      new: { ...newEvent },
     };
   },
   [CREATE_ERROR]: (state, action) => ({
