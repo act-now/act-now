@@ -54,7 +54,7 @@ const createError = createAction(CREATE_ERROR);
 export const create = () => (dispatch, getState) => {
   const state = getState();
   dispatch({ type: CREATE });
-  return axios.post('/events', state.events.new)
+  return axios.post('/demonstrations', state.demonstrations.new)
     .then((res) => {
       dispatch(createSuccess(res.data));
       dispatch(push(`/demonstrations/${res.data.id}`));
