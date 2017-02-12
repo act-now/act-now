@@ -1,4 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
+import axios from 'axios';
 
 const init = {
   new: {
@@ -10,13 +11,19 @@ const init = {
   1: {
     title: 'Fixture Event',
     description: 'kjdfkjdbfvjdsfnvjdnsf fjvdfnv hvd ufhv dfuhdf hfv udfhv',
-    date: new Date(),
+    date: Date.now(),
     location: 'San Francisco',
   },
+  loading: false,
+  error: null,
 };
+
 const CHANGE_TITLE = 'events/CHANGE_TITLE';
 const CHANGE_DESCRIPTION = 'events/CHANGE_DESCRIPTION';
 const CHANGE_DATE = 'events/CHANGE_DATE';
+const FETCH = 'events/FETCH';
+const FETCH_ERROR = 'events/FETCH_ERROR';
+const FETCH_SUCESSS = 'events/FETCH_SUCESSS';
 
 export const changeTitle = createAction(CHANGE_TITLE, (id, title) => ({ id, title }));
 export const changeDescription = createAction(
@@ -28,7 +35,19 @@ export const changeDate = createAction(
   CHANGE_DATE,
   (id, date) => ({ id, date }),
 );
+export const fetchSuccess = createAction(FETCH_SUCESSS);
+export const fetchError = createAction(FETCH_ERROR);
 
+export const fetch = id => (dispatch) => {
+  dispatch({ type: FETCH });
+  axios.get(`/events/${id}`)
+    .then((res) => {
+      dispatch(fetchSuccess(res.data));
+    })
+    .catch((err) => {
+      dispatch(fetchError(err));
+    });
+};
 export default handleActions({
   [CHANGE_TITLE]: (state, action) => {
     const { payload: { id, title } } = action;
@@ -60,4 +79,25 @@ export default handleActions({
       },
     };
   },
+  [FETCH]: state => ({
+    ...state,
+    loading: true,
+    error: null,
+  }),
+  [FETCH_SUCESSS]: (state, action) => {
+    const { payload } = action;
+    return {
+      ...state,
+      loading: false,
+      [payload.id]: {
+        ...(state[payload.id] || {}),
+        ...payload,
+      },
+    };
+  },
+  [FETCH_ERROR]: (state, action) => ({
+    ...state,
+    loading: false,
+    error: action.payload,
+  }),
 }, init);
