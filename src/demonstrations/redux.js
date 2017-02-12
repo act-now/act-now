@@ -10,6 +10,13 @@ const newEvent = {
 };
 
 const init = {
+  1: {
+    title: 'Fixture Event',
+    description: 'kjdfkjdbfvjdsfnvjdnsf fjvdfnv hvd ufhv dfuhdf hfv udfhv',
+    date: Date.now(),
+    location: 'San Francisco',
+    organizers: [],
+  },
   new: { ...newEvent },
   loading: false,
   error: null,
