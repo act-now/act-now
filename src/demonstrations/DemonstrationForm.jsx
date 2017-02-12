@@ -21,7 +21,7 @@ export class DemonstrationForm extends Component {
     this.props.changeDate(this.props.id, value.valueOf());
   };
   onSubmit = (demonstration) => {
-    demonstration.prdemonstrationDefault();
+    demonstration.preventDefault();
   };
 
   render() {
