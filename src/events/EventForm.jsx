@@ -5,7 +5,6 @@ import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as actions from './redux';
-import './EventForm.css';
 
 export class EventForm extends Component {
   onChangeTitle = (event, value) => {
