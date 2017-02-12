@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './redux';
 
+<<<<<<< HEAD:src/events/EventView.jsx
 export class EventView extends Component {
 
   componentDidMount() {
@@ -24,3 +25,8 @@ EventView.propTypes = {
 
 const mapStateToProps = (state, ownProps) => state.events[ownProps.id];
 export default connect(mapStateToProps, actions)(EventView);
+=======
+export default () => (
+  <h1>Demonstration Details</h1>
+);
+>>>>>>> 3ce0ca776653ae01a4ff7e498310fb03ca46a5bd:src/demonstrations/DemonstrationView.jsx

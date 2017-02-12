@@ -1,8 +1,8 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import events from '../events/redux';
+import demonstrations from '../demonstrations/redux';
 
 export default combineReducers({
   routing,
-  events,
+  demonstrations,
 });
