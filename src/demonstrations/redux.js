@@ -10,7 +10,6 @@ const newEvent = {
 };
 
 const init = {
-  //seed for DemonstrationView... will be deleted later
   1: {
     title: 'Fixture Event',
     description: 'kjdfkjdbfvjdsfnvjdnsf fjvdfnv hvd ufhv dfuhdf hfv udfhv',
