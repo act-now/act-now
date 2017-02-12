@@ -13,6 +13,7 @@ const init = {
     description: 'kjdfkjdbfvjdsfnvjdnsf fjvdfnv hvd ufhv dfuhdf hfv udfhv',
     date: Date.now(),
     location: 'San Francisco',
+    organizers: [],
   },
   loading: false,
   error: null,
