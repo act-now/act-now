@@ -7,6 +7,12 @@ const init = {
     date: null,
     location: null,
   },
+  1: {
+    title: 'Fixture Event',
+    description: 'kjdfkjdbfvjdsfnvjdnsf fjvdfnv hvd ufhv dfuhdf hfv udfhv',
+    date: new Date(),
+    location: 'San Francisco',
+  },
 };
 const CHANGE_TITLE = 'events/CHANGE_TITLE';
 const CHANGE_DESCRIPTION = 'events/CHANGE_DESCRIPTION';
