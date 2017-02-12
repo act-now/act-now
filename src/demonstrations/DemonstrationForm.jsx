@@ -20,14 +20,18 @@ export class DemonstrationForm extends Component {
   onChangeTime = (_, value) => {
     this.props.changeDate(this.props.id, value.valueOf());
   };
-  onSubmit = (demonstration) => {
-    demonstration.preventDefault();
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    // Note should change the action if this were to update instead of create
+    this.props.create();
   };
 
   render() {
     const date = this.props.date ? new Date(this.props.date) : null;
     return (
       <form onSubmit={this.onSubmit} className="container">
+        {this.props.error ? this.props.error : null}
         <TextField
           required
           fullWidth
@@ -62,7 +66,7 @@ export class DemonstrationForm extends Component {
             />
           </div>
         </div>
-        <RaisedButton label="Submit" primary fullWidth type="submit" />
+        <RaisedButton label="Submit" primary fullWidth type="submit" icon={this.props.loading ? 'cached' : null} />
       </form>
     );
   }
@@ -76,6 +80,9 @@ DemonstrationForm.propTypes = {
   id: React.PropTypes.string.isRequired,
   date: React.PropTypes.number.isRequired,
   changeDate: React.PropTypes.func.isRequired,
+  loading: React.PropTypes.bool.isRequired,
+  create: React.PropTypes.func.isRequired,
+
 };
 
 const mapStateToProps = (state, ownProps) => state.demonstrations[ownProps.id];
