@@ -1,9 +1,8 @@
 import React from 'react';
-import CreateEventForm from './CreateEventForm';
+import EventForm from './EventForm';
 
 export default () => (
   <div>
-    <h1>New Event</h1>
-    <CreateEventForm />
+    <EventForm id="new" />
   </div>
 );
